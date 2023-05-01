@@ -4,12 +4,31 @@
  * @return {number}
  */
 var search = function(nums, target) {
+    let start = 0;
+    let end = nums.length - 1;
+    while (start <= end)
+    {
+        let middle = Math.floor((start + end) / 2);
 
-    let index = nums.indexOf(target)
+        if (nums[middle]===target)
+        {
 
-    return index
+            return middle
+        }
+        else if (nums[middle]<target)
+        {
+            start = middle + 1;
+        }
+        else
+        {
+            end = middle - 1;
+        }
+
+    }
+    return  -1;
+
 };
 
-const nums = [-1,0,3,5,9,12]; const target = 10
-const result = search(nums,target)
+// let nums = [-1,0,3,5,9,12], target = 9
+// const result = search(nums,target)
 // console.log(result)
