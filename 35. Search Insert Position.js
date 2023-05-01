@@ -5,18 +5,50 @@
  */
 var searchInsert = function(nums, target) {
 
-    let index = nums.indexOf(target);
-    // console.log(index)
+    let start = 0;
+    let end = nums.length -1;
+    let is_found =0;
 
-    if (index === -1) {
+    let checkTarget = searchItem(nums,target);
 
-        let modified_array= [...nums,target].sort((a,b) =>a-b).indexOf(target)
-        return modified_array
+    if (checkTarget === -1)
+    {
+
+            let mod_array = [...nums,target].sort((a,b) =>a-b)
+            checkTarget = searchItem(mod_array,target)
     }
-    else {
-        return index
-    }
+    return checkTarget
+
+
 };
 
-let nums = [3,5,7,9,10], target = 8
+var searchItem = (arr, item) =>{
+    let start = 0;
+    let end = arr.length -1;
+    let is_found =0;
+
+    while (start <= end)
+    {
+        let middle = Math.floor((start+end)/2);
+        if (arr[middle] === item)
+        {
+            return middle
+        }
+        else if (arr[middle] < item)
+        {
+            start = middle + 1;
+        }
+        else
+        {
+            end = middle -1
+        }
+
+    }
+    return -1;
+}
+
+// let nums = [1,3,5,6], target = 5
+
+// let nums = [3,5,7,9,10], target = 8
+// // // let nums = [1,2,3,5,6], target = 2
 // console.log(searchInsert(nums,target))
