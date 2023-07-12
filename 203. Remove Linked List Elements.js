@@ -12,28 +12,8 @@
  */
 var removeElements = function(head, val) {
 
-    if (!head) return head;
+    if (!head) {return null}
 
-    let sentinel = new ListNode();
-
-    sentinel.next = head;
-
-    let prev = sentinel,curr=head;
-
-    while(curr !=null)
-    {
-        if (curr.val == val) {
-            prev.next = curr.next;
-        }
-        else{
-            prev = curr
-        }
-        curr = curr.next;
-    }
-
-    return sentinel.next;
-
-
-
-
+    head.next = removeElements(head.next,val)
+    return head.val===val? head.next:head;
 };
