@@ -4,19 +4,26 @@
  */
 var sortArrayByParityII = function(nums) {
     let res =[];
-
-    for (let i = 0; i <=nums.length ; i++)
+    let odd =[]
+    let even =[]
+    for (let i = 0; i <nums.length ; i++)
     {
-        if (nums[i]%2===0 && (res.length%2)===0)
+        if (nums[i]%2===0)
         {
-            res.push(nums[i])
+            even.push(nums[i])
         }
         else
         {
-            res.push(nums[i])
+            odd.push(nums[i])
         }
     }
-    console.log(res)
+
+    for (let i in odd)
+    {
+        res.push(even[i])
+        res.push(odd[i])
+    }
+   return res
 
 };
 let nums = [4,2,5,7]
